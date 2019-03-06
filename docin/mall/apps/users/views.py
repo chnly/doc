@@ -1,8 +1,10 @@
 from django.shortcuts import render
 
 # Create your views here.
+from rest_framework.generics import CreateAPIView
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from .serializer import RegisterCreateSerializer
 from .models import User
 
 class RegisterUsernameCountAPIView(APIView):
@@ -19,3 +21,13 @@ class RegisterUsernameCountAPIView(APIView):
             'username':username
         }
         return Response(context)
+
+
+class RegisterCreateView(CreateAPIView):
+    """
+   用户注册
+   POST /users/
+
+   用户注册我们需要对数据进行校验,同时需要数据入库
+   """
+    serializer = RegisterCreateSerializer

@@ -211,7 +211,7 @@ LOGGING = {
         'file': {
             'level': 'INFO',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join(BASE_DIR, "logs/meiduo.log"),  # 日志文件的位置
+            'filename': os.path.join(BASE_DIR, "logs/docin.log"),  # 日志文件的位置
             'maxBytes': 300 * 1024 * 1024,
             'backupCount': 10,
             'formatter': 'verbose'
@@ -228,7 +228,24 @@ LOGGING = {
 REST_FRAMEWORK = {
     # 异常处理
     'EXCEPTION_HANDLER': 'utils.exceptions.exception_handler',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
 }
+
+import datetime
+
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'utils.users.jwt_response_payload_handler',
+}
+
+#在配置文件中告知Django使用我们自定义的认证后端
+AUTHENTICATION_BACKENDS = [
+   'utils.users.UsernameMobileAuthBackend',
+]
 
 # 1.我们想要替换系统的User需要通过设置 AUTH_USER_MODEL来实现
 # 2. 子应用.模型类名  只能有一个点(.)
