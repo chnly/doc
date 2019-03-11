@@ -17,17 +17,12 @@ class RegisterUsernameCountAPIView(APIView):
         count = User.objects.filter(username = username).count()
         #组织数据
         context = {
-            'count':count,
-            'username':username
+            'count': count,
+            'username': username
         }
         return Response(context)
 
 
-class RegisterCreateView(CreateAPIView):
-    """
-   用户注册
-   POST /users/
+class RejisterCreateUser(CreateAPIView):
 
-   用户注册我们需要对数据进行校验,同时需要数据入库
-   """
-    serializer = RegisterCreateSerializer
+    serializer_class = RegisterCreateSerializer

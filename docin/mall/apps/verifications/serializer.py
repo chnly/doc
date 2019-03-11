@@ -16,7 +16,7 @@ class RegisterSMSCodeSerializer(serializers.Serializer):
     def validate(self, attrs):
         # 获取用户提交的验证码
         text = attrs['text']
-        image_code_id = attrs['image_code_id']
+        image_code_id = str(attrs['image_code_id'])
         # 链接redis,获取redis中的验证码
         redis_conn = get_redis_connection('code')
         redis_text = redis_conn.get('img_%s'%image_code_id)

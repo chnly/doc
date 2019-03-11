@@ -34,12 +34,14 @@ DEBUG = True
 CORS_ORIGIN_WHITELIST = (
     '127.0.0.1:8080',
     'localhost:8080',
-    'www.docin.site:8080'
+    'www.meiduo.site:8080',
+    'api.meiduo.site:8000',
+    'www.meiduo.site',
 )
 CORS_ALLOW_CREDENTIALS = True  # 允许携带cookie
 
 #允许哪些主机访问
-ALLOWED_HOSTS = ['127.0.0.1','api.docin.site']
+ALLOWED_HOSTS = ['127.0.0.1', 'api.meiduo.site', 'image.meiduo.site', 'www.meiduo.site']
 
 
 # Application definition

@@ -6,5 +6,5 @@ from . import views
 urlpatterns = [
     url(r'^usernames/(?P<username>\w{5,20})/count/$', views.RegisterUsernameCountAPIView.as_view(), name='usernamecount'),
 #/users/auths/
-    url(r'^auths/', obtain_jwt_token, name='auths'),
+    url(r'^$', views.RejisterCreateUser.as_view(), name='rejisteruser'),
 ]

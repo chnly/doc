@@ -43,7 +43,7 @@ class RegisterSmscodeAPIView(APIView):
         sms_code = '%06d'%randint(0,999999)
         # 4.将短信保存在redis中
         redis_conn = get_redis_connection('code')
-        redis_conn.setex('sms_%s'+ mobile, 5*60 ,sms_code)
+        redis_conn.setex('sms_'+ mobile, 5*60 ,sms_code)
         # 5.使用云通讯发送短信
         # ccp = CCP()
         # ccp.send_template_sms(mobile,[sms_code,5],1)
