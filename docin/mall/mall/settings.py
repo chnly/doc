@@ -41,7 +41,7 @@ CORS_ORIGIN_WHITELIST = (
 CORS_ALLOW_CREDENTIALS = True  # 允许携带cookie
 
 #允许哪些主机访问
-ALLOWED_HOSTS = ['127.0.0.1', 'api.meiduo.site', 'image.meiduo.site', 'www.meiduo.site']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
